@@ -9,7 +9,7 @@ import UIKit
 
 class BookWarmCollectionViewController: UICollectionViewController {
 
-    let movie = MovieInfo().movie
+    var movie = MovieInfo().movie
     
     @IBOutlet var searchButton: UIBarButtonItem!
     
@@ -27,8 +27,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -44,30 +43,31 @@ class BookWarmCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookWarmCollectionViewCell", for: indexPath) as! BookWarmCollectionViewCell
         
         let row = indexPath.row
-        
-        cell.backgroundColor = getRandomColor()
-        cell.layer.cornerRadius = 15
-        
-        cell.bookWarmCellTitleLabel.text = movie[row].title
-        cell.bookWarmCellTitleLabel.font = .boldSystemFont(ofSize: 20)
-        cell.bookWarmCellTitleLabel.textColor = .white
-        
-        cell.bookWarmCellRateLabel.text = "\(movie[row].rate)"
-        cell.bookWarmCellRateLabel.font = .boldSystemFont(ofSize: 10)
-        cell.bookWarmCellRateLabel.textColor = .white
-        
-        cell.bookWarmCellImageView.image = UIImage(named: movie[row].title)
-        cell.bookWarmCellImageView.contentMode = .scaleAspectFit
+        cell.bookWarmLikeButton.tag = row
+
+        cell.configureCell(data: movie[row])
+        cell.bookWarmLikeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         
         return cell
     }
     
+    @objc
+    func likeButtonPressed(_ sender: UIButton) {
+        movie[sender.tag].isLike.toggle()
+        collectionView.reloadData()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
         
-        vc.viewTitle = movie[indexPath.row].title
+        let row = indexPath.row
+        
+        vc.viewTitle = movie[row].title
+        vc.releaseDate = "개봉일: \(movie[row].releaseDate)"
+        vc.runtime = "상영 시간: \(movie[row].runtime)분"
+        vc.overView = movie[row].overview
+        vc.rate = "평점: \(movie[row].rate)점"
         
         navigationController?.pushViewController(vc, animated: true)
     }

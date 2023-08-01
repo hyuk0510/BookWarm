@@ -9,20 +9,35 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var viewTitle = ""
+    static let identifier = "DetailViewController"
     
-    @IBOutlet var detailLabel: UILabel!
+    var viewTitle = ""
+    var releaseDate = ""
+    var runtime = ""
+    var rate = ""
+    var overView = ""
+    
+    @IBOutlet var detailImageView: UIImageView!
+    
+    @IBOutlet var releaseDateLabel: UILabel!
+    @IBOutlet var runtimeLabel: UILabel!
+    @IBOutlet var rateLabel: UILabel!
+    @IBOutlet var overViewLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = viewTitle
         
-    
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(closeButtonPressed))
         navigationItem.leftBarButtonItem?.tintColor = .black
         
-        designDetailLabel()
+        designReleaseDateLabel()
+        designRuntimeLabel()
+        designRateLabel()
+        designOverViewLabel()
+        
+        detailImageView.image = UIImage(named: viewTitle)
     }
     
     @objc
@@ -30,9 +45,24 @@ class DetailViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func designDetailLabel() {
-        detailLabel.text = "상세 화면"
-        detailLabel.font = .boldSystemFont(ofSize: 50)
-        detailLabel.textAlignment = .center
+    func designReleaseDateLabel() {
+        releaseDateLabel.text = releaseDate
+        releaseDateLabel.font = .boldSystemFont(ofSize: 15)
+    }
+    
+    func designRuntimeLabel() {
+        runtimeLabel.text = runtime
+        runtimeLabel.font = .boldSystemFont(ofSize: 15)
+    }
+    
+    func designRateLabel() {
+        rateLabel.text = rate
+        rateLabel.font = .boldSystemFont(ofSize: 15)
+    }
+    
+    func designOverViewLabel() {
+        overViewLabel.text = overView
+        overViewLabel.font = .boldSystemFont(ofSize: 13)
+        overViewLabel.numberOfLines = 0
     }
 }
