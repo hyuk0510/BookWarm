@@ -16,11 +16,7 @@ class BookWarmCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var bookWarmCellImageView: UIImageView!
     
-    func configureCell(data: Movie) {
-        let likeButtonImage = data.isLike ? "hand.thumbsup.fill" : "hand.thumbsup"
-        let row = bookWarmLikeButton.tag
-        let movie = MovieInfo().movie
-        
+    override func awakeFromNib() {
         self.backgroundColor = .systemBlue
         self.layer.cornerRadius = 15
 
@@ -28,14 +24,21 @@ class BookWarmCollectionViewCell: UICollectionViewCell {
         designBookWarmCellRateLabel()
         
         bookWarmCellImageView.contentMode = .scaleAspectFit
+        bookWarmLikeButton.setTitle("", for: .normal)
+        bookWarmLikeButton.tintColor = .white
+    }
+    
+    func configureCell(data: Movie) {
+        let likeButtonImage = data.isLike ? "hand.thumbsup.fill" : "hand.thumbsup"
+        let row = bookWarmLikeButton.tag
+        let movie = MovieInfo().movie
+        
         bookWarmCellTitleLabel.text = movie[row].title
         bookWarmCellRateLabel.text = "\(movie[row].rate)점"
         bookWarmCellImageView.image = UIImage(named: movie[row].title)
         bookWarmLikeButton.setImage(UIImage(systemName: likeButtonImage), for: .normal)
-        bookWarmLikeButton.setTitle("", for: .normal)
-        bookWarmLikeButton.tintColor = .white
     }
-
+    
     func designBookWarmCellTitleLabel() {
         bookWarmCellTitleLabel.font = .boldSystemFont(ofSize: 15)
         bookWarmCellTitleLabel.textColor = .white

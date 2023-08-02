@@ -63,11 +63,13 @@ class BookWarmCollectionViewController: UICollectionViewController {
         
         let row = indexPath.row
         
-        vc.viewTitle = movie[row].title
-        vc.releaseDate = "개봉일: \(movie[row].releaseDate)"
-        vc.runtime = "상영 시간: \(movie[row].runtime)분"
-        vc.overView = movie[row].overview
-        vc.rate = "평점: \(movie[row].rate)점"
+        MovieInfo.recentMovie.insert(movie[row], at: 0)
+        
+        if MovieInfo.recentMovie.count > 4 {
+            MovieInfo.recentMovie.removeLast()
+        }
+                
+        vc.getData(data: movie[row])
         
         navigationController?.pushViewController(vc, animated: true)
     }

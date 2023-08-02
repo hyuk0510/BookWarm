@@ -43,6 +43,8 @@ class DetailViewController: UIViewController {
     @objc
     func closeButtonPressed() {
         navigationController?.popViewController(animated: true)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     func designReleaseDateLabel() {
@@ -64,5 +66,13 @@ class DetailViewController: UIViewController {
         overViewLabel.text = overView
         overViewLabel.font = .boldSystemFont(ofSize: 13)
         overViewLabel.numberOfLines = 0
+    }
+    
+    func getData(data: Movie) {
+        viewTitle = data.title
+        releaseDate = "개봉일: \(data.releaseDate)"
+        runtime = "상영 시간: \(data.runtime)분"
+        overView = data.overview
+        rate = "평점: \(data.rate)점"
     }
 }
