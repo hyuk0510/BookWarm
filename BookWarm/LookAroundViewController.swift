@@ -13,9 +13,6 @@ class LookAroundViewController: UIViewController, UICollectionViewDelegate, UICo
     let recommendMovie = MovieInfo().movie
     let sectionTitle = ["요즘 인기 작품"]
     
-    
-    @IBOutlet var backView: UICollectionView!
-    
     @IBOutlet var collectionViewTitleLabel: UILabel!
     @IBOutlet var recentCollectionView: UICollectionView!
     @IBOutlet var recommendTableView: UITableView!
@@ -58,6 +55,21 @@ class LookAroundViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.recentCollectionViewImage.image = UIImage(named: "\(recentMovie[indexPath.row].title)")
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let vc = storyboard?.instantiateViewController(identifier: DetailViewController.identifier) as! DetailViewController
+        let row = indexPath.row
+        
+        vc.getData(data: recommendMovie[row])
+        vc.detailImageView.image = UIImage(named: recentMovie[row].title)
+        
+        let nav = UINavigationController(rootViewController: vc)
+        
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -109,20 +121,6 @@ class LookAroundViewController: UIViewController, UICollectionViewDelegate, UICo
         layout.minimumInteritemSpacing = spacing
         
         recentCollectionView.collectionViewLayout = layout
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let vc = storyboard?.instantiateViewController(identifier: DetailViewController.identifier) as! DetailViewController
-        let row = indexPath.row
-        
-        vc.getData(data: recommendMovie[row])
-        
-        let nav = UINavigationController(rootViewController: vc)
-        
-        nav.modalPresentationStyle = .fullScreen
-        
-        present(nav, animated: true)
     }
     
     func designCollectionViewTitleLabel() {

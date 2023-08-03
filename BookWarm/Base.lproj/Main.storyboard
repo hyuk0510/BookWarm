@@ -250,7 +250,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="6Hc-Qf-EjX"/>
                     <connections>
-                        <outlet property="backView" destination="HMP-Zf-OEC" id="YnL-U7-ATG"/>
                         <outlet property="collectionViewTitleLabel" destination="go8-NK-VUN" id="Ro6-HD-9vN"/>
                         <outlet property="recentCollectionView" destination="HMP-Zf-OEC" id="5fY-13-Eaz"/>
                         <outlet property="recommendTableView" destination="CV2-2J-Ezr" id="mxl-P7-9Nb"/>
