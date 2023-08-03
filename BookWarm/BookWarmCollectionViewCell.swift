@@ -31,11 +31,10 @@ class BookWarmCollectionViewCell: UICollectionViewCell {
     func configureCell(data: Movie) {
         let likeButtonImage = data.isLike ? "hand.thumbsup.fill" : "hand.thumbsup"
         let row = bookWarmLikeButton.tag
-        let movie = MovieInfo().movie
         
-        bookWarmCellTitleLabel.text = movie[row].title
-        bookWarmCellRateLabel.text = "\(movie[row].rate)점"
-        bookWarmCellImageView.image = UIImage(named: movie[row].title)
+        bookWarmCellTitleLabel.text = data.title
+        bookWarmCellRateLabel.text = "\(data.rate)점"
+        bookWarmCellImageView.image = UIImage(named: data.title)
         bookWarmLikeButton.setImage(UIImage(systemName: likeButtonImage), for: .normal)
     }
     
