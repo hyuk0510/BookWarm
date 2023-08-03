@@ -141,19 +141,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RSg-xe-Kek">
+                                <rect key="frame" x="20" y="440.33333333333326" width="353" height="357.66666666666674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="loh-ea-gek"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="z9s-ys-au8" firstAttribute="trailing" secondItem="A2l-uU-AOg" secondAttribute="trailing" id="1ce-tU-hdi"/>
                             <constraint firstItem="a1j-X6-8Ax" firstAttribute="trailing" secondItem="A2l-uU-AOg" secondAttribute="trailing" id="6I8-St-npf"/>
                             <constraint firstItem="loh-ea-gek" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="a1j-X6-8Ax" secondAttribute="bottom" constant="20" id="7Fv-Cn-SHf"/>
+                            <constraint firstItem="RSg-xe-Kek" firstAttribute="trailing" secondItem="a1j-X6-8Ax" secondAttribute="trailing" id="Bt7-u4-sBL"/>
                             <constraint firstItem="Gti-vr-E9q" firstAttribute="leading" secondItem="loh-ea-gek" secondAttribute="leading" constant="20" id="EIj-6Y-haJ"/>
                             <constraint firstItem="z9s-ys-au8" firstAttribute="leading" secondItem="A2l-uU-AOg" secondAttribute="leading" id="In9-iK-P8d"/>
+                            <constraint firstItem="RSg-xe-Kek" firstAttribute="top" secondItem="a1j-X6-8Ax" secondAttribute="bottom" constant="20" id="JiD-oi-SrB"/>
                             <constraint firstItem="Ozd-Iw-mlD" firstAttribute="trailing" secondItem="A2l-uU-AOg" secondAttribute="trailing" id="VEZ-WZ-eRf"/>
+                            <constraint firstItem="loh-ea-gek" firstAttribute="bottom" secondItem="RSg-xe-Kek" secondAttribute="bottom" constant="20" id="YcJ-pG-MYC"/>
                             <constraint firstItem="Gti-vr-E9q" firstAttribute="top" secondItem="loh-ea-gek" secondAttribute="top" constant="20" id="fOu-MM-0UN"/>
                             <constraint firstItem="loh-ea-gek" firstAttribute="trailing" secondItem="A2l-uU-AOg" secondAttribute="trailing" constant="20" id="g2n-YA-Z9Q"/>
                             <constraint firstItem="a1j-X6-8Ax" firstAttribute="leading" secondItem="Gti-vr-E9q" secondAttribute="leading" id="g5i-XH-Nbe"/>
+                            <constraint firstItem="RSg-xe-Kek" firstAttribute="leading" secondItem="a1j-X6-8Ax" secondAttribute="leading" id="hxF-QK-PZR"/>
                             <constraint firstItem="A2l-uU-AOg" firstAttribute="leading" secondItem="Gti-vr-E9q" secondAttribute="trailing" constant="20" id="kRp-7w-MK3"/>
                             <constraint firstItem="a1j-X6-8Ax" firstAttribute="top" secondItem="Gti-vr-E9q" secondAttribute="bottom" constant="20" id="lv1-ac-g16"/>
                             <constraint firstItem="Ozd-Iw-mlD" firstAttribute="leading" secondItem="A2l-uU-AOg" secondAttribute="leading" id="sgz-69-CER"/>
@@ -161,9 +173,13 @@
                             <constraint firstItem="Ozd-Iw-mlD" firstAttribute="top" secondItem="z9s-ys-au8" secondAttribute="bottom" constant="20" id="yUL-gy-wIP"/>
                             <constraint firstItem="z9s-ys-au8" firstAttribute="top" secondItem="A2l-uU-AOg" secondAttribute="bottom" constant="20" id="z89-G8-Oox"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Wxf-ea-wQh" appends="YES" id="kdv-E4-qg4"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="detailImageView" destination="Gti-vr-E9q" id="Vte-Br-2Lu"/>
+                        <outlet property="memoTextView" destination="RSg-xe-Kek" id="zGk-vt-Z1m"/>
                         <outlet property="overViewLabel" destination="a1j-X6-8Ax" id="TcC-h4-BZE"/>
                         <outlet property="rateLabel" destination="Ozd-Iw-mlD" id="qkq-vJ-nEh"/>
                         <outlet property="releaseDateLabel" destination="A2l-uU-AOg" id="FaN-CJ-VvD"/>
@@ -171,6 +187,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DOn-RI-Ag0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Wxf-ea-wQh">
+                    <connections>
+                        <action selector="tapView:" destination="zue-XA-bN4" id="61C-S0-WrL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="846.56488549618314" y="716.90140845070425"/>
         </scene>
@@ -299,6 +320,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
