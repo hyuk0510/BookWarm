@@ -16,6 +16,8 @@ class BookWarmCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var bookWarmCellImageView: UIImageView!
     
+    static let identifier = "BookWarmCollectionViewCell"
+    
     override func awakeFromNib() {
         self.backgroundColor = .systemBlue
         self.layer.cornerRadius = 15

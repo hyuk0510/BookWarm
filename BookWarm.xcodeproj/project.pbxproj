@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D87337DD2A83ABD800BE6F6A /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87337DC2A83ABD800BE6F6A /* BookSearchViewController.swift */; };
+		D87337E02A83AC4500BE6F6A /* BookSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87337DE2A83AC4500BE6F6A /* BookSearchTableViewCell.swift */; };
+		D87337E12A83AC4500BE6F6A /* BookSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87337DF2A83AC4500BE6F6A /* BookSearchTableViewCell.xib */; };
+		D87337E42A83AECF00BE6F6A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D87337E32A83AECF00BE6F6A /* Alamofire */; };
+		D87337E72A83AED900BE6F6A /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = D87337E62A83AED900BE6F6A /* SwiftyJSON */; };
+		D87337EA2A83AEE500BE6F6A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D87337E92A83AEE500BE6F6A /* Kingfisher */; };
+		D87337EC2A83B1FE00BE6F6A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D87337EB2A83B1FE00BE6F6A /* .gitignore */; };
+		D87337F02A83C5EF00BE6F6A /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87337EF2A83C5EF00BE6F6A /* APIKey.swift */; };
 		D8BFE8662A77992200105A6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE8652A77992200105A6F /* AppDelegate.swift */; };
 		D8BFE8682A77992200105A6F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE8672A77992200105A6F /* SceneDelegate.swift */; };
 		D8BFE86A2A77992200105A6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE8692A77992200105A6F /* ViewController.swift */; };
@@ -28,6 +36,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D87337DC2A83ABD800BE6F6A /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = SOURCE_ROOT; };
+		D87337DE2A83AC4500BE6F6A /* BookSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookSearchTableViewCell.swift; path = BookWarm/ViewControllers/BookSearchTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		D87337DF2A83AC4500BE6F6A /* BookSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BookSearchTableViewCell.xib; path = BookWarm/Storyboards/BookSearchTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D87337EB2A83B1FE00BE6F6A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = SOURCE_ROOT; };
+		D87337EF2A83C5EF00BE6F6A /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = SOURCE_ROOT; };
 		D8BFE8622A77992200105A6F /* BookWarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8BFE8652A77992200105A6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8BFE8672A77992200105A6F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,8 +59,8 @@
 		D8BFE88D2A7A242600105A6F /* LookAroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundViewController.swift; sourceTree = "<group>"; };
 		D8BFE88F2A7A27E300105A6F /* RecentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentCollectionViewCell.swift; sourceTree = "<group>"; };
 		D8BFE8902A7A27E300105A6F /* RecentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentCollectionViewCell.xib; sourceTree = "<group>"; };
-		D8BFE8932A7A35A300105A6F /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		D8BFE8942A7A35A300105A6F /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D8BFE8932A7A35A300105A6F /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecommendTableViewCell.swift; path = BookWarm/Cells/RecommendTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		D8BFE8942A7A35A300105A6F /* RecommendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RecommendTableViewCell.xib; path = BookWarm/Storyboards/RecommendTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,15 +68,66 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87337EA2A83AEE500BE6F6A /* Kingfisher in Frameworks */,
+				D87337E72A83AED900BE6F6A /* SwiftyJSON in Frameworks */,
+				D87337E42A83AECF00BE6F6A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D87337D82A83A93C00BE6F6A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D87337DE2A83AC4500BE6F6A /* BookSearchTableViewCell.swift */,
+				D8BFE8932A7A35A300105A6F /* RecommendTableViewCell.swift */,
+				D8BFE88F2A7A27E300105A6F /* RecentCollectionViewCell.swift */,
+				D8BFE87B2A7799BD00105A6F /* BookWarmCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D87337D92A83A95A00BE6F6A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D87337DC2A83ABD800BE6F6A /* BookSearchViewController.swift */,
+				D8BFE88D2A7A242600105A6F /* LookAroundViewController.swift */,
+				D8BFE8852A77A77300105A6F /* DetailViewController.swift */,
+				D8BFE8832A779DE800105A6F /* SearchViewController.swift */,
+				D8BFE8792A77994E00105A6F /* BookWarmCollectionViewController.swift */,
+				D8BFE8692A77992200105A6F /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D87337DA2A83A97C00BE6F6A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D87337EF2A83C5EF00BE6F6A /* APIKey.swift */,
+				D8BFE87F2A779AFD00105A6F /* MovieInfo.swift */,
+				D8BFE8812A779B2100105A6F /* Movie.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D87337DB2A83A99100BE6F6A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D8BFE8942A7A35A300105A6F /* RecommendTableViewCell.xib */,
+				D8BFE86B2A77992200105A6F /* Main.storyboard */,
+				D8BFE8902A7A27E300105A6F /* RecentCollectionViewCell.xib */,
+				D8BFE87C2A7799BD00105A6F /* BookWarmCollectionViewCell.xib */,
+				D8BFE8702A77992300105A6F /* LaunchScreen.storyboard */,
+				D87337DF2A83AC4500BE6F6A /* BookSearchTableViewCell.xib */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		D8BFE8592A77992200105A6F = {
 			isa = PBXGroup;
 			children = (
+				D87337EB2A83B1FE00BE6F6A /* .gitignore */,
 				D8BFE8642A77992200105A6F /* BookWarm */,
 				D8BFE8632A77992200105A6F /* Products */,
 			);
@@ -80,24 +144,13 @@
 		D8BFE8642A77992200105A6F /* BookWarm */ = {
 			isa = PBXGroup;
 			children = (
-				D8BFE8932A7A35A300105A6F /* RecommendTableViewCell.swift */,
-				D8BFE8942A7A35A300105A6F /* RecommendTableViewCell.xib */,
+				D87337DB2A83A99100BE6F6A /* Storyboards */,
+				D87337DA2A83A97C00BE6F6A /* Data */,
+				D87337D92A83A95A00BE6F6A /* ViewControllers */,
+				D87337D82A83A93C00BE6F6A /* Cells */,
 				D8BFE8652A77992200105A6F /* AppDelegate.swift */,
 				D8BFE8672A77992200105A6F /* SceneDelegate.swift */,
-				D8BFE8692A77992200105A6F /* ViewController.swift */,
-				D8BFE86B2A77992200105A6F /* Main.storyboard */,
-				D8BFE88F2A7A27E300105A6F /* RecentCollectionViewCell.swift */,
-				D8BFE8902A7A27E300105A6F /* RecentCollectionViewCell.xib */,
-				D8BFE88D2A7A242600105A6F /* LookAroundViewController.swift */,
-				D8BFE8852A77A77300105A6F /* DetailViewController.swift */,
-				D8BFE8832A779DE800105A6F /* SearchViewController.swift */,
-				D8BFE87F2A779AFD00105A6F /* MovieInfo.swift */,
-				D8BFE8812A779B2100105A6F /* Movie.swift */,
-				D8BFE87B2A7799BD00105A6F /* BookWarmCollectionViewCell.swift */,
-				D8BFE87C2A7799BD00105A6F /* BookWarmCollectionViewCell.xib */,
-				D8BFE8792A77994E00105A6F /* BookWarmCollectionViewController.swift */,
 				D8BFE86E2A77992300105A6F /* Assets.xcassets */,
-				D8BFE8702A77992300105A6F /* LaunchScreen.storyboard */,
 				D8BFE8732A77992300105A6F /* Info.plist */,
 			);
 			path = BookWarm;
@@ -119,6 +172,11 @@
 			dependencies = (
 			);
 			name = BookWarm;
+			packageProductDependencies = (
+				D87337E32A83AECF00BE6F6A /* Alamofire */,
+				D87337E62A83AED900BE6F6A /* SwiftyJSON */,
+				D87337E92A83AEE500BE6F6A /* Kingfisher */,
+			);
 			productName = BookWarm;
 			productReference = D8BFE8622A77992200105A6F /* BookWarm.app */;
 			productType = "com.apple.product-type.application";
@@ -147,6 +205,11 @@
 				Base,
 			);
 			mainGroup = D8BFE8592A77992200105A6F;
+			packageReferences = (
+				D87337E22A83AECF00BE6F6A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D87337E52A83AED900BE6F6A /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				D87337E82A83AEE500BE6F6A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = D8BFE8632A77992200105A6F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -161,8 +224,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D87337EC2A83B1FE00BE6F6A /* .gitignore in Resources */,
 				D8BFE8962A7A35A300105A6F /* RecommendTableViewCell.xib in Resources */,
 				D8BFE8922A7A27E300105A6F /* RecentCollectionViewCell.xib in Resources */,
+				D87337E12A83AC4500BE6F6A /* BookSearchTableViewCell.xib in Resources */,
 				D8BFE87E2A7799BD00105A6F /* BookWarmCollectionViewCell.xib in Resources */,
 				D8BFE8722A77992300105A6F /* LaunchScreen.storyboard in Resources */,
 				D8BFE86F2A77992300105A6F /* Assets.xcassets in Resources */,
@@ -179,7 +244,9 @@
 			files = (
 				D8BFE8862A77A77300105A6F /* DetailViewController.swift in Sources */,
 				D8BFE8822A779B2100105A6F /* Movie.swift in Sources */,
+				D87337E02A83AC4500BE6F6A /* BookSearchTableViewCell.swift in Sources */,
 				D8BFE8912A7A27E300105A6F /* RecentCollectionViewCell.swift in Sources */,
+				D87337F02A83C5EF00BE6F6A /* APIKey.swift in Sources */,
 				D8BFE86A2A77992200105A6F /* ViewController.swift in Sources */,
 				D8BFE8842A779DE800105A6F /* SearchViewController.swift in Sources */,
 				D8BFE8662A77992200105A6F /* AppDelegate.swift in Sources */,
@@ -187,6 +254,7 @@
 				D8BFE88E2A7A242600105A6F /* LookAroundViewController.swift in Sources */,
 				D8BFE8952A7A35A300105A6F /* RecommendTableViewCell.swift in Sources */,
 				D8BFE87D2A7799BD00105A6F /* BookWarmCollectionViewCell.swift in Sources */,
+				D87337DD2A83ABD800BE6F6A /* BookSearchViewController.swift in Sources */,
 				D8BFE8802A779AFD00105A6F /* MovieInfo.swift in Sources */,
 				D8BFE8682A77992200105A6F /* SceneDelegate.swift in Sources */,
 			);
@@ -406,6 +474,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D87337E22A83AECF00BE6F6A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		D87337E52A83AED900BE6F6A /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		D87337E82A83AEE500BE6F6A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D87337E32A83AECF00BE6F6A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D87337E22A83AECF00BE6F6A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		D87337E62A83AED900BE6F6A /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D87337E52A83AED900BE6F6A /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		D87337E92A83AEE500BE6F6A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D87337E82A83AEE500BE6F6A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D8BFE85A2A77992200105A6F /* Project object */;
 }

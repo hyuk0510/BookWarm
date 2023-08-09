@@ -11,6 +11,8 @@ class SearchViewController: UIViewController {
 
     @IBOutlet var recentSearchLabel: UILabel!
     
+    static let identifier = "SearchViewController"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

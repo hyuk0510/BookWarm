@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ihq-5N-R74">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T1i-2m-e40">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -82,6 +82,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXR-pc-Lko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1773.2824427480916" y="3.5211267605633805"/>
+        </scene>
+        <!--Book Search View Controller-->
+        <scene sceneID="ckI-Qf-2tg">
+            <objects>
+                <viewController storyboardIdentifier="BookSearchViewController" id="T1i-2m-e40" customClass="BookSearchViewController" customModule="BookWarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aw4-hc-zgm">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="R85-N1-iIy">
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="T1i-2m-e40" id="HfV-KO-OAm"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zDN-fX-qbO">
+                                <rect key="frame" x="0.0" y="115" width="393" height="703"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BookSearchTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookSearchTableViewCell" id="s45-7X-SOk" customClass="BookSearchTableViewCell" customModule="BookWarm" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s45-7X-SOk" id="FNf-s6-VIh">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rU2-Vm-v0B"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rU2-Vm-v0B" firstAttribute="bottom" secondItem="zDN-fX-qbO" secondAttribute="bottom" id="3uI-Iz-TmZ"/>
+                            <constraint firstItem="R85-N1-iIy" firstAttribute="leading" secondItem="rU2-Vm-v0B" secondAttribute="leading" id="SPZ-Mj-UFp"/>
+                            <constraint firstItem="rU2-Vm-v0B" firstAttribute="trailing" secondItem="zDN-fX-qbO" secondAttribute="trailing" id="Ye8-Sq-ZDr"/>
+                            <constraint firstItem="zDN-fX-qbO" firstAttribute="top" secondItem="R85-N1-iIy" secondAttribute="bottom" id="cWQ-VU-rAh"/>
+                            <constraint firstItem="R85-N1-iIy" firstAttribute="top" secondItem="rU2-Vm-v0B" secondAttribute="top" id="hnL-zA-4lY"/>
+                            <constraint firstItem="zDN-fX-qbO" firstAttribute="leading" secondItem="rU2-Vm-v0B" secondAttribute="leading" id="jJi-Wn-5S8"/>
+                            <constraint firstItem="R85-N1-iIy" firstAttribute="trailing" secondItem="rU2-Vm-v0B" secondAttribute="trailing" id="kue-6H-eud"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bookSearchTableView" destination="zDN-fX-qbO" id="y4t-hS-kcH"/>
+                        <outlet property="searchBar" destination="R85-N1-iIy" id="1Fj-f9-N98"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SQe-oc-PyA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2905" y="4"/>
         </scene>
         <!--Item-->
         <scene sceneID="7Po-oo-uVt">

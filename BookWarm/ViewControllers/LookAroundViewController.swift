@@ -28,10 +28,10 @@ class LookAroundViewController: UIViewController, UICollectionViewDelegate, UICo
         recommendTableView.delegate = self
         recommendTableView.dataSource = self
         
-        let cvNib = UINib(nibName: "RecentCollectionViewCell", bundle: nil)
-        recentCollectionView.register(cvNib, forCellWithReuseIdentifier: "RecentCollectionViewCell")
-        let tvNib = UINib(nibName: "RecommendTableViewCell", bundle: nil)
-        recommendTableView.register(tvNib, forCellReuseIdentifier: "RecommendTableViewCell")
+        let cvNib = UINib(nibName: RecentCollectionViewCell.identifier, bundle: nil)
+        recentCollectionView.register(cvNib, forCellWithReuseIdentifier: RecentCollectionViewCell.identifier)
+        let tvNib = UINib(nibName: RecommendTableViewCell.identifier, bundle: nil)
+        recommendTableView.register(tvNib, forCellReuseIdentifier: RecommendTableViewCell.identifier)
                 
         designCollectionViewTitleLabel()
         configureRecentCollectionViewLayOut()
@@ -50,7 +50,7 @@ class LookAroundViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentCollectionViewCell", for: indexPath) as! RecentCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentCollectionViewCell.identifier, for: indexPath) as! RecentCollectionViewCell
         
         cell.recentCollectionViewImage.image = UIImage(named: "\(recentMovie[indexPath.row].title)")
         
@@ -87,7 +87,7 @@ class LookAroundViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecommendTableViewCell") as! RecommendTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: RecommendTableViewCell.identifier) as! RecommendTableViewCell
         
         cell.recommendTitleLabel.tag = indexPath.row
         

@@ -14,6 +14,8 @@ class RecommendTableViewCell: UITableViewCell {
     @IBOutlet var recommendTitleLabel: UILabel!
     @IBOutlet var recommendDetailLabel: UILabel!
     
+    static let identifier = "RecommendTableViewCell"
+    
     let movie = MovieInfo().movie
     
     override func awakeFromNib() {

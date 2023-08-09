@@ -25,8 +25,8 @@ class BookWarmCollectionViewController: UICollectionViewController {
         
         searchBar.placeholder = "검색어를 입력해주세요."
         
-        let nib = UINib(nibName: "BookWarmCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "BookWarmCollectionViewCell")
+        let nib = UINib(nibName: BookWarmCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: BookWarmCollectionViewCell.identifier)
         
         designSearchButton()
         setCollectionViewLayout()
@@ -34,7 +34,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         
-        let vc = storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: SearchViewController.identifier) as! SearchViewController
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -47,7 +47,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookWarmCollectionViewCell", for: indexPath) as! BookWarmCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookWarmCollectionViewCell.identifier, for: indexPath) as! BookWarmCollectionViewCell
         
         let row = indexPath.row
         cell.bookWarmLikeButton.tag = row
@@ -109,6 +109,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
         
         collectionView.collectionViewLayout = layout
     }
+    
 }
 
 extension BookWarmCollectionViewController: UISearchBarDelegate {
@@ -138,7 +139,5 @@ extension BookWarmCollectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         searchBarSearchButtonClicked(searchBar)
-        
     }
 }
-//hello
