@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import RealmSwift
 
 struct Book {
     let title: String
@@ -109,6 +110,22 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource, 
         cell.contentsLabel.text = bookList[row].contents
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let realm = try! Realm()
+        
+        let task = BookTable(title: bookList[indexPath.row].title, author: bookList[indexPath.row].author, imageURL: bookList[indexPath.row].thumbnail, contents: bookList[indexPath.row].contents)
+        
+        try! realm.write {
+            realm.add(task)
+            print("Realm Add Succeed")
+        }
+        
+        let vc = BookDataViewController()
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
