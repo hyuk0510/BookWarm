@@ -39,6 +39,8 @@
 		D8E3B10C2AA62D7100717539 /* BookDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3B10B2AA62D7100717539 /* BookDataViewController.swift */; };
 		D8E3B10E2AA62D9000717539 /* BookDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3B10D2AA62D9000717539 /* BookDataTableViewCell.swift */; };
 		D8E3B1112AA62F7A00717539 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3B1102AA62F7A00717539 /* ReusableProtocol.swift */; };
+		D8E3B1182AA70F6600717539 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3B1172AA70F6600717539 /* FileManager+Extension.swift */; };
+		D8E3B11A2AA73BAC00717539 /* BookDataMemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E3B1192AA73BAC00717539 /* BookDataMemoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		D8E3B10B2AA62D7100717539 /* BookDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataViewController.swift; sourceTree = "<group>"; };
 		D8E3B10D2AA62D9000717539 /* BookDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataTableViewCell.swift; sourceTree = "<group>"; };
 		D8E3B1102AA62F7A00717539 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		D8E3B1172AA70F6600717539 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		D8E3B1192AA73BAC00717539 /* BookDataMemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDataMemoController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 				D8BFE8832A779DE800105A6F /* SearchViewController.swift */,
 				D8BFE8792A77994E00105A6F /* BookWarmCollectionViewController.swift */,
 				D8E3B10B2AA62D7100717539 /* BookDataViewController.swift */,
+				D8E3B1192AA73BAC00717539 /* BookDataMemoController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 		D8BFE8642A77992200105A6F /* BookWarm */ = {
 			isa = PBXGroup;
 			children = (
+				D8E3B1162AA70F4F00717539 /* Extension */,
 				D8E3B10F2AA62F5500717539 /* Protocol */,
 				D8E3B1032AA625FE00717539 /* Realm */,
 				D87337DB2A83A99100BE6F6A /* Storyboards */,
@@ -185,6 +191,14 @@
 				D8E3B1102AA62F7A00717539 /* ReusableProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D8E3B1162AA70F4F00717539 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D8E3B1172AA70F6600717539 /* FileManager+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8BFE8862A77A77300105A6F /* DetailViewController.swift in Sources */,
+				D8E3B1182AA70F6600717539 /* FileManager+Extension.swift in Sources */,
+				D8E3B11A2AA73BAC00717539 /* BookDataMemoController.swift in Sources */,
 				D8E3B10C2AA62D7100717539 /* BookDataViewController.swift in Sources */,
 				D8BFE8822A779B2100105A6F /* Movie.swift in Sources */,
 				D87337E02A83AC4500BE6F6A /* BookSearchTableViewCell.swift in Sources */,

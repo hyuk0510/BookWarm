@@ -28,6 +28,9 @@ class BookSearchViewController: UIViewController {
     
     static let identifier = "BookSearchViewController"
     
+    let realm = try! Realm()
+    var tasks: Results<BookTable>!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +44,13 @@ class BookSearchViewController: UIViewController {
         bookSearchTableView.prefetchDataSource = self
         bookSearchTableView.rowHeight = 200
         
+        tasks = realm.objects(BookTable.self)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "컬렉션", style: .plain, target: self, action: #selector(showCollection))
+    }
+    
+    @objc func showCollection() {
+        let vc = BookDataViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func callRequest(query: String, page: Int) {
@@ -113,18 +123,22 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let realm = try! Realm()
-        
-        let task = BookTable(title: bookList[indexPath.row].title, author: bookList[indexPath.row].author, imageURL: bookList[indexPath.row].thumbnail, contents: bookList[indexPath.row].contents)
-        
-        try! realm.write {
-            realm.add(task)
-            print("Realm Add Succeed")
+        guard let cell = tableView.cellForRow(at: indexPath) as? BookSearchTableViewCell else { return }
+        let task = BookTable(title: bookList[indexPath.row].title, author: bookList[indexPath.row].author, imageURL: bookList[indexPath.row].thumbnail, contents: bookList[indexPath.row].contents, memo: nil)
+        let vc = BookDataViewController()
+
+        do {
+            try realm.write {
+                realm.add(task)
+            }
+        } catch {
+            print("Add Data Error")
         }
         
-        let vc = BookDataViewController()
-        
+        if cell.bookImageView.image != nil {
+            saveImageToDocument(fileName: "Sun_\(task._id).jpg", image: cell.bookImageView.image ?? UIImage(systemName: "xmark")!)
+        }
+
         navigationController?.pushViewController(vc, animated: true)
     }
     
