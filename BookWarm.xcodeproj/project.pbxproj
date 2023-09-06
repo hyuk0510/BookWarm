@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D851F2BB2AA8464500081AD5 /* BookTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D851F2BA2AA8464500081AD5 /* BookTableRepository.swift */; };
 		D87337DD2A83ABD800BE6F6A /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87337DC2A83ABD800BE6F6A /* BookSearchViewController.swift */; };
 		D87337E02A83AC4500BE6F6A /* BookSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87337DE2A83AC4500BE6F6A /* BookSearchTableViewCell.swift */; };
 		D87337E12A83AC4500BE6F6A /* BookSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87337DF2A83AC4500BE6F6A /* BookSearchTableViewCell.xib */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D851F2BA2AA8464500081AD5 /* BookTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableRepository.swift; sourceTree = "<group>"; };
 		D87337DC2A83ABD800BE6F6A /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = SOURCE_ROOT; };
 		D87337DE2A83AC4500BE6F6A /* BookSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookSearchTableViewCell.swift; path = BookWarm/ViewControllers/BookSearchTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		D87337DF2A83AC4500BE6F6A /* BookSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BookSearchTableViewCell.xib; path = BookWarm/Storyboards/BookSearchTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				D8E3B1062AA6265600717539 /* RealmModel.swift */,
+				D851F2BA2AA8464500081AD5 /* BookTableRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				D8BFE8822A779B2100105A6F /* Movie.swift in Sources */,
 				D87337E02A83AC4500BE6F6A /* BookSearchTableViewCell.swift in Sources */,
 				D8BFE8912A7A27E300105A6F /* RecentCollectionViewCell.swift in Sources */,
+				D851F2BB2AA8464500081AD5 /* BookTableRepository.swift in Sources */,
 				D87337F02A83C5EF00BE6F6A /* APIKey.swift in Sources */,
 				D8BFE8842A779DE800105A6F /* SearchViewController.swift in Sources */,
 				D8BFE8662A77992200105A6F /* AppDelegate.swift in Sources */,

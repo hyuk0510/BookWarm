@@ -8,8 +8,6 @@
 import UIKit
 
 class RecentCollectionViewCell: UICollectionViewCell {
-
-    static let identifier = "RecentCollectionViewCell"
     
     @IBOutlet var recentCollectionViewImage: UIImageView!
     

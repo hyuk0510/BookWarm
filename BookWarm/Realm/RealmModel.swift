@@ -15,7 +15,8 @@ class BookTable: Object {
     @Persisted var author: String?
     @Persisted var imageURL: String?
     @Persisted var contents: String?
-    @Persisted var memo: String?
+    @Persisted var selfMemo: String?
+    @Persisted var titleAndMemo: String?
     
     convenience init(title: String, author: String?, imageURL: String?, contents: String?, memo: String?) {
         self.init()
@@ -24,6 +25,7 @@ class BookTable: Object {
         self.author = author
         self.imageURL = imageURL
         self.contents = contents
-        self.memo = memo
+        self.selfMemo = memo
+        self.titleAndMemo = "책 제목: \(title), 메모: \(memo)"
     }
 }

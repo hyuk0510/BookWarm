@@ -8,9 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
-    static let identifier = "DetailViewController"
-    
+        
     var viewTitle = ""
     var releaseDate = ""
     var runtime = ""

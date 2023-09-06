@@ -21,8 +21,8 @@ class BookDataViewController: UIViewController {
     }()
     
     var tasks: Results<BookTable>!
-    let realm = try! Realm()
-
+    let repository = BookTableRepository()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +32,7 @@ class BookDataViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        tasks = realm.objects(BookTable.self)
+        tasks = repository.fetch()
         
     }
 
@@ -50,14 +50,8 @@ class BookDataViewController: UIViewController {
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
 
             self.deleteImageToDocument(fileName: "Sun_\(data._id).jpg")
+            self.repository.deleteData(data)
             
-            do {
-                try self.realm.write {
-                    self.realm.delete(data)
-                }
-            } catch {
-                print("Delete Data Error")
-            }
             self.tableView.reloadData()
         }
         alert.addAction(cancel)
@@ -83,7 +77,7 @@ extension BookDataViewController: UITableViewDelegate, UITableViewDataSource {
         cell.title.text = data.title
         cell.author.text = data.author
         cell.contents.text = data.contents
-        cell.memo.text = data.memo
+        cell.memo.text = data.selfMemo
         
         return cell
     }

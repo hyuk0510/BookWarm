@@ -25,18 +25,14 @@ class BookSearchViewController: UIViewController {
     var bookList: [Book] = []
     var page = 0
     var isEnd = false
+    let repository = BookTableRepository()
     
-    static let identifier = "BookSearchViewController"
-    
-    let realm = try! Realm()
-    var tasks: Results<BookTable>!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: BookSearchTableViewCell.identifier, bundle: nil)
+        let nib = UINib(nibName: BookSearchTableViewCell.reuseIdentifier, bundle: nil)
         
-        bookSearchTableView.register(nib, forCellReuseIdentifier: BookSearchTableViewCell.identifier)
+        bookSearchTableView.register(nib, forCellReuseIdentifier: BookSearchTableViewCell.reuseIdentifier)
 
         searchBar.delegate = self
         bookSearchTableView.delegate = self
@@ -44,7 +40,6 @@ class BookSearchViewController: UIViewController {
         bookSearchTableView.prefetchDataSource = self
         bookSearchTableView.rowHeight = 200
         
-        tasks = realm.objects(BookTable.self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "컬렉션", style: .plain, target: self, action: #selector(showCollection))
     }
     
@@ -64,7 +59,6 @@ class BookSearchViewController: UIViewController {
                 let json = JSON(value)
                 
                 self.isEnd = json["meta"]["is_end"].boolValue
-                var authors = ""
                 
                 for item in json["documents"].arrayValue {
                     let title = item["title"].stringValue
@@ -106,7 +100,7 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookSearchTableViewCell.identifier) as? BookSearchTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookSearchTableViewCell.reuseIdentifier) as? BookSearchTableViewCell else {
             return UITableViewCell()
         }
         
@@ -127,13 +121,7 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource, 
         let task = BookTable(title: bookList[indexPath.row].title, author: bookList[indexPath.row].author, imageURL: bookList[indexPath.row].thumbnail, contents: bookList[indexPath.row].contents, memo: nil)
         let vc = BookDataViewController()
 
-        do {
-            try realm.write {
-                realm.add(task)
-            }
-        } catch {
-            print("Add Data Error")
-        }
+        repository.addData(task)
         
         if cell.bookImageView.image != nil {
             saveImageToDocument(fileName: "Sun_\(task._id).jpg", image: cell.bookImageView.image ?? UIImage(systemName: "xmark")!)

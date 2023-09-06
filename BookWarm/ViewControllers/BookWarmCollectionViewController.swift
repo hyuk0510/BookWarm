@@ -25,8 +25,8 @@ class BookWarmCollectionViewController: UICollectionViewController {
         
         searchBar.placeholder = "검색어를 입력해주세요."
         
-        let nib = UINib(nibName: BookWarmCollectionViewCell.identifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: BookWarmCollectionViewCell.identifier)
+        let nib = UINib(nibName: BookWarmCollectionViewCell.reuseIdentifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: BookWarmCollectionViewCell.reuseIdentifier)
         
         designSearchButton()
         setCollectionViewLayout()
@@ -34,7 +34,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         
-        let vc = storyboard!.instantiateViewController(withIdentifier: SearchViewController.identifier) as! SearchViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: SearchViewController.reuseIdentifier) as! SearchViewController
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -47,7 +47,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookWarmCollectionViewCell.identifier, for: indexPath) as! BookWarmCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookWarmCollectionViewCell.reuseIdentifier, for: indexPath) as! BookWarmCollectionViewCell
         
         let row = indexPath.row
         cell.bookWarmLikeButton.tag = row
@@ -66,7 +66,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = storyboard!.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as! DetailViewController
         
         let row = indexPath.row
         

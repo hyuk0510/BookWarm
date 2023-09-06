@@ -16,9 +16,7 @@ class BookSearchTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     @IBOutlet var contentsLabel: UILabel!
-    
-    static let identifier = "BookSearchTableViewCell"
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         bookImageView.contentMode = .scaleToFill
