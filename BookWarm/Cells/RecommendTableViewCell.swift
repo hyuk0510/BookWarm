@@ -13,7 +13,7 @@ class RecommendTableViewCell: UITableViewCell {
     
     @IBOutlet var recommendTitleLabel: UILabel!
     @IBOutlet var recommendDetailLabel: UILabel!
-    
+        
     let movie = MovieInfo().movie
     
     override func awakeFromNib() {

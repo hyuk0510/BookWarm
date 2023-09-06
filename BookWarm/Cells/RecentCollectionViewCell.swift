@@ -8,7 +8,7 @@
 import UIKit
 
 class RecentCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet var recentCollectionViewImage: UIImageView!
     
     override func awakeFromNib() {

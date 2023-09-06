@@ -10,6 +10,9 @@ import UIKit
 class BookWarmCollectionViewController: UICollectionViewController {
 
     var movie = MovieInfo().movie
+    let searchBar = UISearchBar()
+    var searchList: [Movie] = []
+    var isSearch: Bool = false
     
     @IBOutlet var searchButton: UIBarButtonItem!
     
@@ -17,9 +20,13 @@ class BookWarmCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         title = "선상혁님의 책장"
-                
-        let nib = UINib(nibName: "BookWarmCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "BookWarmCollectionViewCell")
+        searchBar.delegate = self
+        navigationItem.titleView = searchBar
+        
+        searchBar.placeholder = "검색어를 입력해주세요."
+        
+        let nib = UINib(nibName: BookWarmCollectionViewCell.reuseIdentifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: BookWarmCollectionViewCell.reuseIdentifier)
         
         designSearchButton()
         setCollectionViewLayout()
@@ -27,7 +34,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         
-        let vc = storyboard!.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: SearchViewController.reuseIdentifier) as! SearchViewController
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -35,17 +42,17 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return movie.count
+        return isSearch ? searchList.count: movie.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BookWarmCollectionViewCell", for: indexPath) as! BookWarmCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookWarmCollectionViewCell.reuseIdentifier, for: indexPath) as! BookWarmCollectionViewCell
         
         let row = indexPath.row
         cell.bookWarmLikeButton.tag = row
 
-        cell.configureCell(data: movie[row])
+        isSearch ? cell.configureCell(data: searchList[row]): cell.configureCell(data: movie[row])
         cell.bookWarmLikeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
         
         return cell
@@ -59,7 +66,7 @@ class BookWarmCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = storyboard!.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
+        let vc = storyboard!.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as! DetailViewController
         
         let row = indexPath.row
         
@@ -101,5 +108,36 @@ class BookWarmCollectionViewController: UICollectionViewController {
         layout.minimumInteritemSpacing = spacing
         
         collectionView.collectionViewLayout = layout
+    }
+    
+}
+
+extension BookWarmCollectionViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearch.toggle()
+        
+        collectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchList.removeAll()
+        for item in movie {
+            if item.title.contains(searchBar.text ?? "") {
+                searchList.append(item)
+            }
+        }
+        collectionView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        isSearch.toggle()
+        collectionView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        searchBarSearchButtonClicked(searchBar)
     }
 }

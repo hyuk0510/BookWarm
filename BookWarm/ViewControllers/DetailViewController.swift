@@ -8,14 +8,13 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
-    static let identifier = "DetailViewController"
-    
+        
     var viewTitle = ""
     var releaseDate = ""
     var runtime = ""
     var rate = ""
     var overView = ""
+    var placeholderText = "메모를 입력해주세요"
     
     @IBOutlet var detailImageView: UIImageView!
     
@@ -24,10 +23,14 @@ class DetailViewController: UIViewController {
     @IBOutlet var rateLabel: UILabel!
     @IBOutlet var overViewLabel: UILabel!
     
+    @IBOutlet var memoTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = viewTitle
+        
+        memoTextView.delegate = self
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(closeButtonPressed))
         navigationItem.leftBarButtonItem?.tintColor = .black
@@ -36,15 +39,24 @@ class DetailViewController: UIViewController {
         designRuntimeLabel()
         designRateLabel()
         designOverViewLabel()
+        designMemoTextView()
         
         detailImageView.image = UIImage(named: viewTitle)
     }
     
+    @IBAction func tapView(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    
     @objc
     func closeButtonPressed() {
-        navigationController?.popViewController(animated: true)
         
-        dismiss(animated: true, completion: nil)
+        if (self.presentingViewController) != nil {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     func designReleaseDateLabel() {
@@ -74,5 +86,28 @@ class DetailViewController: UIViewController {
         runtime = "상영 시간: \(data.runtime)분"
         overView = data.overview
         rate = "평점: \(data.rate)점"
+    }
+    
+    func designMemoTextView() {
+        memoTextView.text = placeholderText
+        memoTextView.backgroundColor = .systemGray
+        memoTextView.font = .boldSystemFont(ofSize: 13)
+        memoTextView.textColor = .white
+    }
+}
+
+extension DetailViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholderText {
+            textView.text = nil
+            textView.textColor = .black
+            textView.font = .boldSystemFont(ofSize: 15)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            designMemoTextView()
+        }
     }
 }

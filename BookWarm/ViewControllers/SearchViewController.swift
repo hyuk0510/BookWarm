@@ -10,7 +10,7 @@ import UIKit
 class SearchViewController: UIViewController {
 
     @IBOutlet var recentSearchLabel: UILabel!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
